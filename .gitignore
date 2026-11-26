@@ -1,0 +1,11 @@
+.env
+**/.env
+*.log
+source/server/logs/
+source/server/node_modules/
+.vercel
+public
+.cursor
+
+.vercel
+.env*
