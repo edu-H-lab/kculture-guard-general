@@ -3854,6 +3854,11 @@ function renderLogin() {
         <div class="login-wrap panel">
           ${loginBody}
         </div>
+        <button type="button" class="login-qr-card" id="studentQrBtn" aria-label="학생 접속 QR 크게 보기">
+          <img src="${IMG("student-qr.png")}" alt="학생 접속 QR 코드" />
+          <span class="login-qr-label">학생 접속 QR</span>
+          <span class="login-qr-hint">눌러서 크게 보기</span>
+        </button>
         ` : `
         <div class="login-wrap panel">
           ${loginBody}
@@ -4073,6 +4078,21 @@ function renderLogin() {
     state.loginFlow = "review";
     render();
   };
+  // 학생 접속 QR — 교실 화면에 크게 띄워 학생 기기로 찍게 한다.
+  const qrBtn = document.getElementById("studentQrBtn");
+  if (qrBtn) {
+    qrBtn.onclick = () => {
+      Swal.fire({
+        title: "학생은 이 QR을 찍어 들어와요",
+        html: `
+          <img src="${IMG("student-qr.png")}" alt="학생 접속 QR 코드" style="width:min(340px,70vw);height:auto;display:block;margin:4px auto 10px;image-rendering:pixelated;" />
+          <p style="margin:0;line-height:1.7;"><b>학생용 로그인 → 학급 계정으로 입장</b><br />학급코드 · 번호 · 별명을 입력해요.</p>
+        `,
+        confirmButtonText: "닫기",
+        width: 520
+      });
+    };
+  }
 }
 
 function renderIntro() {

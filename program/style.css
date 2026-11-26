@@ -385,6 +385,39 @@ body.logged-out #globalClassExtBtn { display: none; }
   display: grid;
   gap: 8px;
 }
+/* 학생 접속 QR (로그인 선택 화면 오른쪽 아래) */
+.login-qr-card {
+  position: absolute;
+  right: max(16px, env(safe-area-inset-right));
+  bottom: max(16px, env(safe-area-inset-bottom));
+  z-index: 4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 10px 10px 8px;
+  border: 0;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.94);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.16);
+  color: #1f2b42;
+  font-family: inherit;
+  cursor: pointer;
+}
+.login-qr-card img {
+  width: clamp(96px, 11vw, 140px);
+  height: auto;
+  display: block;
+  image-rendering: pixelated;
+}
+.login-qr-label { font-weight: 800; font-size: 0.95rem; }
+.login-qr-hint { font-size: 0.75rem; color: #5f6679; }
+.login-qr-card:hover { background: #fff; }
+.login-qr-card:focus-visible { outline: 3px solid #1f9c86; outline-offset: 2px; }
+/* 휴대폰처럼 작은 화면에서는 QR을 찍을 일이 없으니 숨긴다 */
+@media (max-width: 760px), (max-height: 520px) {
+  .login-qr-card { display: none; }
+}
 .login-screen .login-review-solo.login-wrap {
   background: rgba(255, 255, 255, 0.92);
   backdrop-filter: blur(4px);
